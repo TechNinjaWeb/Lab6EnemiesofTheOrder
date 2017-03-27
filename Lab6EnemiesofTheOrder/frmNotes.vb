@@ -1,4 +1,5 @@
-﻿Public Class frmNotes
+﻿Option Strict On
+Public Class frmNotes
     Dim FakeData As New DBL.Views.Enemies
 
     Private Sub frmNotes_Load(sender As Object, e As EventArgs) Handles MyBase.Load

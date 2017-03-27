@@ -1,7 +1,10 @@
-﻿Imports System.ComponentModel
+﻿Option Strict On
+
+Imports System.ComponentModel
 
 Public Class frmMain
     Private Sub frmEnemiesofTheSecondOrder_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        Call setDefaults()
         Call populateDataGrid()
 
     End Sub
@@ -22,7 +25,7 @@ Public Class frmMain
     End Sub
 
     Private Sub MenuEditCurrent_Click(sender As Object, e As EventArgs) Handles MenuEditCurrent.Click
-        Call Me.populateEditor(Me.dgvEnemiesofSecondOrder.SelectedRows)
+        Call frmEnemyEditor.populateEnemyData(Me.dgvEnemiesofSecondOrder.CurrentCell.RowIndex)
         frmEnemyEditor.Show()
     End Sub
 
@@ -31,6 +34,7 @@ Public Class frmMain
     End Sub
 
     Private Sub btnEdit_Click(sender As Object, e As EventArgs) Handles btnEdit.Click
+        Call frmEnemyEditor.populateEnemyData(Me.dgvEnemiesofSecondOrder.CurrentCell.RowIndex)
         frmEnemyEditor.Show()
     End Sub
 
@@ -48,31 +52,42 @@ Public Class frmMain
         frmNotes.Show()
     End Sub
 
+    Private Sub setDefaults()
+        Me.dgvEnemiesofSecondOrder.ForeColor = Color.Black
+    End Sub
+
     Public Sub saveOrCreateEnemy()
         Dim e As New DBL.Tables.datEnemy
 
-        'e.enemyID = CInt(frmEnemyEditor.lblEnemyIDNumber.Text)
-        e.enemyID = 1
         e.firstName = frmEnemyEditor.txtFirstName.Text
         e.lastName = frmEnemyEditor.txtLastName.Text
-        e.allianceID = CInt(frmEnemyEditor.cboAlliance.Text)          ' need to make sure the value member is set
-        e.threatLevelID = CInt(frmEnemyEditor.cboThreatLevel.Text)     ' need to make sure the value member is set
+        e.allianceID = CInt(frmEnemyEditor.cboAlliance.SelectedValue)          ' need to make sure the value member is set
+        e.threatLevelID = CInt(frmEnemyEditor.cboThreatLevel.SelectedValue)     ' need to make sure the value member is set
         e.notes = ""
 
+        If frmEnemyEditor.txtFirstName.Text.Trim = String.Empty Or frmEnemyEditor.txtLastName.Text.Trim = String.Empty Then
 
-        'If CInt(frmEnemyEditor.lblEnemyID.Text) > 0 Then
-        '    DBL.Tables.datEnemy.updateExistingRow(e)
 
-        'Else
-        'MsgBox("A Record could not be found to update. One has been created for you.")
-        DBL.Tables.datEnemy.insertNewRow(e)
-        'End If
+            MsgBox("You must enter valid data in the first name and last name fields", 0, "Input Error")
 
-        ''Populate data grid view
+        Else
+            'Dim TempRow As New DBL.Views.Enemies
+            'TempRow = DBL.Views.Enemies.getOneRow(CInt(frmEnemyEditor.lblEnemyIDNumber.Text))
 
-        'Me.dgvEnemiesofSecondOrder.DataSource = Nothing
-        'Me.dgvEnemiesofSecondOrder.DataSource = DBL.Views.Enemies.getEnemyList()
-        'Me.dgvEnemiesofSecondOrder.DataSource = DBL.Tables.datEnemy.getAllRows()
+            If CInt(frmEnemyEditor.lblEnemyIDNumber.Text) >= 0 Then
+                e.enemyID = CInt(frmEnemyEditor.lblEnemyIDNumber.Text)
+                DBL.Tables.datEnemy.updateExistingRow(e)
+
+                Console.WriteLine("Updating")
+
+            Else
+
+                DBL.Tables.datEnemy.insertNewRow(e)
+
+                Console.WriteLine("Creating")
+            End If
+        End If
+
 
     End Sub
 
@@ -86,15 +101,10 @@ Public Class frmMain
 
     End Sub
 
-    Public Sub populateEditor(Row As DataGridViewSelectedRowCollection)
 
-        If Row IsNot Nothing Then
-            For Each R As DataGridViewRow In Row
-                Console.Write("Row is: ")
-                Console.WriteLine(R.ToString)
-            Next
 
-        End If
+    Public Sub populateComboBoxes()
+
     End Sub
 
     Private Sub MenuRefreshEnemies_Click(sender As Object, e As EventArgs) Handles MenuRefreshEnemies.Click

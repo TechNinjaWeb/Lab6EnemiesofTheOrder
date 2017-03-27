@@ -481,11 +481,11 @@ Namespace DBL
 
 #Region " -- SQLStatements -- "
             Public Class SQLStatements
-                Public Const SELECT_ALL As String = "SELECT * FROM [lstAllliances]"
-                Public Const SELECT_1_BY_ID As String = "SELECT TOP 1 * FROM [lstAllliances] WHERE [allianceID] = @Key"
-                Public Const INSERT_NEW As String = "INSERT INTO lstAllliances VALUES(@allianceName, @isActive)"
-                Public Const UPDATE_EXISING As String = "UPDATE lstAllliances Set allianceName  = @allianceName, isActive  = @isActive WHERE allianceID = @PK"
-                Public Const DELETE_EXISTING As String = "DELETE FROM [lstAllliances] WHERE [allianceID] = @Key"
+                Public Const SELECT_ALL As String = "SELECT * FROM [lstAlliances]"
+                Public Const SELECT_1_BY_ID As String = "SELECT TOP 1 * FROM [lstAlliances] WHERE [allianceID] = @Key"
+                Public Const INSERT_NEW As String = "INSERT INTO lstAlliances VALUES(@allianceName, @isActive)"
+                Public Const UPDATE_EXISING As String = "UPDATE lstAlliances Set allianceName  = @allianceName, isActive  = @isActive WHERE allianceID = @PK"
+                Public Const DELETE_EXISTING As String = "DELETE FROM [lstAlliances] WHERE [allianceID] = @Key"
             End Class
 
 #End Region
@@ -668,6 +668,7 @@ Namespace DBL
                 Public Const lastName As String = "lastName"
                 Public Const firstName As String = "firstName"
                 Public Const threatLevelID As String = "threatLevelID"
+                Public Const threatLevel As String = "threatLevel"
                 Public Const allianceID As String = "allianceID"
                 Public Const allianceName As String = "allianceName"
                 Public Const isActive As String = "isActive"
@@ -686,7 +687,7 @@ Namespace DBL
                                                     ) VALUES (
                                                    @enemyID, @firstName, @lastName, @threatLevelID, @allianceID, @notes
                                                     )"
-                Public Const UPDATE_EXISING As String = "UPDATE datEnemy Set firstName  = @firstName, lastName  = @lastName, threatLevelID  = @threatLevelID, allianceID  = @allianceID, notes  = @notes WHERE enemyID = @PK"
+                Public Const UPDATE_EXISING As String = "UPDATE [datEnemy] Set firstName  = @firstName, lastName  = @lastName, threatLevelID  = @threatLevelID, allianceID  = @allianceID, notes  = @notes WHERE enemyID = @PK"
             End Class
 
 #End Region
@@ -749,6 +750,16 @@ Namespace DBL
                 End Get
                 Set(ByVal value As String)
                     _lastName = value
+                End Set
+            End Property
+
+            Private _threatLevel As String
+            Public Property threatLevel() As String
+                Get
+                    Return _threatLevel
+                End Get
+                Set(ByVal value As String)
+                    _threatLevel = value
                 End Set
             End Property
 
@@ -828,7 +839,9 @@ Namespace DBL
                         If Not IsDBNull(dR(Fields.firstName)) Then returnRow.firstName = dR(Fields.firstName)
                         If Not IsDBNull(dR(Fields.lastName)) Then returnRow.lastName = dR(Fields.lastName)
                         If Not IsDBNull(dR(Fields.threatLevelID)) Then returnRow.threatLevelID = dR(Fields.threatLevelID)
+                        If Not IsDBNull(dR(Fields.threatLevel)) Then returnRow.threatLevel = dR(Fields.threatLevel)
                         If Not IsDBNull(dR(Fields.allianceID)) Then returnRow.allianceID = dR(Fields.allianceID)
+                        If Not IsDBNull(dR(Fields.allianceName)) Then returnRow.allianceName = dR(Fields.allianceName)
                         If Not IsDBNull(dR(Fields.notes)) Then returnRow.notes = dR(Fields.notes)
                     End If
                 Catch ex As Exception
@@ -894,7 +907,7 @@ Namespace DBL
             End Function
             Public Shared Function updateExistingRow(Row As Enemies) As Boolean
                 Dim ReturnValue As Boolean = False
-                If Row.enemyID > 0 Then
+                If Row.enemyID >= 0 Then
                     Dim connDB As New SqlConnection
                     connDB.ConnectionString = Conn.getConnectionString
 
