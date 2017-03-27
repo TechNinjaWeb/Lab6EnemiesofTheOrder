@@ -66,25 +66,25 @@ Public Class frmMain
         e.notes = ""
 
         If frmEnemyEditor.txtFirstName.Text.Trim = String.Empty Or frmEnemyEditor.txtLastName.Text.Trim = String.Empty Then
-
-
             MsgBox("You must enter valid data in the first name and last name fields", 0, "Input Error")
 
         Else
-            'Dim TempRow As New DBL.Views.Enemies
-            'TempRow = DBL.Views.Enemies.getOneRow(CInt(frmEnemyEditor.lblEnemyIDNumber.Text))
+            Dim Temp As Integer = Nothing
+            Dim IsNewRecord As Boolean = False
+            IsNewRecord = IsNewRecord = Integer.TryParse(frmEnemyEditor.lblEnemyIDNumber.Text, Temp)
 
-            If CInt(frmEnemyEditor.lblEnemyIDNumber.Text) >= 0 Then
-                e.enemyID = CInt(frmEnemyEditor.lblEnemyIDNumber.Text)
+            Console.WriteLine("Is New?: " & IsNewRecord.ToString & " temp value = " & Temp.ToString)
+
+            If Not IsNewRecord Then
+                e.enemyID = Temp
+                e.notes = DBL.Tables.datEnemy.getOneRow(e.enemyID).notes.ToString
                 DBL.Tables.datEnemy.updateExistingRow(e)
-
                 Console.WriteLine("Updating")
 
             Else
-
                 DBL.Tables.datEnemy.insertNewRow(e)
-
                 Console.WriteLine("Creating")
+
             End If
         End If
 

@@ -1,15 +1,14 @@
 ﻿Option Strict On
 Public Class frmNotes
-    Dim FakeData As New DBL.Views.Enemies
-
     Private Sub frmNotes_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        FakeData = DBL.Views.Enemies.getOneRow(0)
-        Me.rtbEnemy.Text = FakeData.notes
-        'Console.WriteLine("Fake Data: " & FakeData.allianceName)
+        Dim EnemyData As New DBL.Views.Enemies
+        EnemyData = DBL.Views.Enemies.getOneRow(CInt(frmMain.dgvEnemiesofSecondOrder.CurrentCell.RowIndex))
+        Me.rtbEnemy.Text = EnemyData.notes
+
     End Sub
 #Region "---------- MenuStrip Event Handlers ----------"
     Private Sub SaveToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SaveToolStripMenuItem.Click
-        Call saveNotes(Me.rtbEnemy.Text)
+        Call saveNotes(CInt(frmMain.dgvEnemiesofSecondOrder.CurrentCell.RowIndex))
     End Sub
 
     Private Sub LoadFromFileToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles LoadFromFileToolStripMenuItem.Click
@@ -45,14 +44,13 @@ Public Class frmNotes
 #End Region
 
 #Region "---------- MenuStrip Subroutines ----------"
-    Public Sub saveNotes(Content As String)
-        FakeData = DBL.Views.Enemies.getOneRow(0)
+    Public Sub saveNotes(ID As Integer)
+        Dim EnemyData As New DBL.Tables.datEnemy
+        EnemyData = DBL.Tables.datEnemy.getOneRow(ID)
 
-        Dim e As New DBL.Tables.datEnemy
-        e = DBL.Tables.datEnemy.getOneRow(0)
-        e.notes = Me.rtbEnemy.Text
+        EnemyData.notes = Me.rtbEnemy.Text
 
-        DBL.Tables.datEnemy.updateExistingRow(e)
+        DBL.Tables.datEnemy.updateExistingRow(EnemyData)
 
         Call frmMain.populateDataGrid()
 

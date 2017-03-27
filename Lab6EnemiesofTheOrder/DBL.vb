@@ -212,18 +212,18 @@ Namespace DBL
             End Function
             Public Shared Function updateExistingRow(Row As datEnemy) As Boolean
                 Dim ReturnValue As Boolean = False
-                If Row.enemyID > 0 Then
+                If Row.enemyID >= 0 Then
                     Dim connDB As New SqlConnection
-                    connDB.connectionstring = Conn.getConnectionString
+                    connDB.ConnectionString = Conn.getConnectionString
 
                     Dim command As New SqlCommand
-                    command.connection = connDB
+                    command.Connection = connDB
                     command.CommandType = CommandType.Text
-                    command.commandtext = SQLStatements.UPDATE_EXISING
+                    command.CommandText = SQLStatements.UPDATE_EXISING
                     command.Parameters.AddWithValue("@PK", Row.enemyID)
                     command.Parameters.AddWithValue("@firstName", Row.firstName)
                     command.Parameters.AddWithValue("@lastName", Row.lastName)
-                    command.Parameters.AddWithValue("@theatLevelID", Row.threatLevelID)
+                    command.Parameters.AddWithValue("@threatLevelID", Row.threatLevelID)
                     command.Parameters.AddWithValue("@allianceID", Row.allianceID)
                     command.Parameters.AddWithValue("@notes", Row.notes)
                     Try
