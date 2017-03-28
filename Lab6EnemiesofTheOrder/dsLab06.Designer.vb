@@ -359,7 +359,7 @@ Partial Public Class dsLab06
         
         Private columnlastName As Global.System.Data.DataColumn
         
-        Private columntheatLevelID As Global.System.Data.DataColumn
+        Private columnthreatLevelID As Global.System.Data.DataColumn
         
         Private columnallianceID As Global.System.Data.DataColumn
         
@@ -426,9 +426,9 @@ Partial Public Class dsLab06
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public ReadOnly Property theatLevelIDColumn() As Global.System.Data.DataColumn
+        Public ReadOnly Property threatLevelIDColumn() As Global.System.Data.DataColumn
             Get
-                Return Me.columntheatLevelID
+                Return Me.columnthreatLevelID
             End Get
         End Property
         
@@ -485,9 +485,9 @@ Partial Public Class dsLab06
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Overloads Function AdddatEnemyRow(ByVal firstName As String, ByVal lastName As String, ByVal theatLevelID As Integer, ByVal allianceID As Integer, ByVal notes As String) As datEnemyRow
+        Public Overloads Function AdddatEnemyRow(ByVal firstName As String, ByVal lastName As String, ByVal threatLevelID As Integer, ByVal allianceID As Integer, ByVal notes As String) As datEnemyRow
             Dim rowdatEnemyRow As datEnemyRow = CType(Me.NewRow,datEnemyRow)
-            Dim columnValuesArray() As Object = New Object() {Nothing, firstName, lastName, theatLevelID, allianceID, notes}
+            Dim columnValuesArray() As Object = New Object() {Nothing, firstName, lastName, threatLevelID, allianceID, notes}
             rowdatEnemyRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowdatEnemyRow)
             Return rowdatEnemyRow
@@ -519,7 +519,7 @@ Partial Public Class dsLab06
             Me.columnenemyID = MyBase.Columns("enemyID")
             Me.columnfirstName = MyBase.Columns("firstName")
             Me.columnlastName = MyBase.Columns("lastName")
-            Me.columntheatLevelID = MyBase.Columns("theatLevelID")
+            Me.columnthreatLevelID = MyBase.Columns("threatLevelID")
             Me.columnallianceID = MyBase.Columns("allianceID")
             Me.columnnotes = MyBase.Columns("notes")
         End Sub
@@ -533,8 +533,8 @@ Partial Public Class dsLab06
             MyBase.Columns.Add(Me.columnfirstName)
             Me.columnlastName = New Global.System.Data.DataColumn("lastName", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnlastName)
-            Me.columntheatLevelID = New Global.System.Data.DataColumn("theatLevelID", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columntheatLevelID)
+            Me.columnthreatLevelID = New Global.System.Data.DataColumn("threatLevelID", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnthreatLevelID)
             Me.columnallianceID = New Global.System.Data.DataColumn("allianceID", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnallianceID)
             Me.columnnotes = New Global.System.Data.DataColumn("notes", GetType(String), Nothing, Global.System.Data.MappingType.Element)
@@ -549,7 +549,7 @@ Partial Public Class dsLab06
             Me.columnfirstName.AllowDBNull = false
             Me.columnfirstName.MaxLength = 25
             Me.columnlastName.MaxLength = 25
-            Me.columntheatLevelID.AllowDBNull = false
+            Me.columnthreatLevelID.AllowDBNull = false
             Me.columnallianceID.AllowDBNull = false
             Me.columnnotes.MaxLength = 2147483647
         End Sub
@@ -1337,12 +1337,12 @@ Partial Public Class dsLab06
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Property theatLevelID() As Integer
+        Public Property threatLevelID() As Integer
             Get
-                Return CType(Me(Me.tabledatEnemy.theatLevelIDColumn),Integer)
+                Return CType(Me(Me.tabledatEnemy.threatLevelIDColumn),Integer)
             End Get
             Set
-                Me(Me.tabledatEnemy.theatLevelIDColumn) = value
+                Me(Me.tabledatEnemy.threatLevelIDColumn) = value
             End Set
         End Property
         
@@ -1747,7 +1747,7 @@ Namespace dsLab06TableAdapters
             tableMapping.ColumnMappings.Add("enemyID", "enemyID")
             tableMapping.ColumnMappings.Add("firstName", "firstName")
             tableMapping.ColumnMappings.Add("lastName", "lastName")
-            tableMapping.ColumnMappings.Add("theatLevelID", "theatLevelID")
+            tableMapping.ColumnMappings.Add("threatLevelID", "threatLevelID")
             tableMapping.ColumnMappings.Add("allianceID", "allianceID")
             tableMapping.ColumnMappings.Add("notes", "notes")
             Me._adapter.TableMappings.Add(tableMapping)
@@ -1755,47 +1755,47 @@ Namespace dsLab06TableAdapters
             Me._adapter.DeleteCommand.Connection = Me.Connection
             Me._adapter.DeleteCommand.CommandText = "DELETE FROM [dbo].[datEnemy] WHERE (([enemyID] = @Original_enemyID) AND ([firstNa"& _ 
                 "me] = @Original_firstName) AND ((@IsNull_lastName = 1 AND [lastName] IS NULL) OR"& _ 
-                " ([lastName] = @Original_lastName)) AND ([theatLevelID] = @Original_theatLevelID"& _ 
-                ") AND ([allianceID] = @Original_allianceID))"
+                " ([lastName] = @Original_lastName)) AND ([threatLevelID] = @Original_threatLevel"& _ 
+                "ID) AND ([allianceID] = @Original_allianceID))"
             Me._adapter.DeleteCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_enemyID", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "enemyID", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_firstName", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "firstName", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_lastName", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "lastName", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_lastName", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "lastName", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_theatLevelID", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "theatLevelID", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_threatLevelID", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "threatLevelID", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_allianceID", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "allianceID", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand = New Global.System.Data.SqlClient.SqlCommand()
             Me._adapter.InsertCommand.Connection = Me.Connection
-            Me._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[datEnemy] ([firstName], [lastName], [theatLevelID], [allianceI"& _ 
-                "D], [notes]) VALUES (@firstName, @lastName, @theatLevelID, @allianceID, @notes);"& _ 
-                ""&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT enemyID, firstName, lastName, theatLevelID, allianceID, notes FROM datE"& _ 
-                "nemy WHERE (enemyID = SCOPE_IDENTITY())"
+            Me._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[datEnemy] ([firstName], [lastName], [threatLevelID], [alliance"& _ 
+                "ID], [notes]) VALUES (@firstName, @lastName, @threatLevelID, @allianceID, @notes"& _ 
+                ");"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT enemyID, firstName, lastName, threatLevelID, allianceID, notes FROM d"& _ 
+                "atEnemy WHERE (enemyID = SCOPE_IDENTITY())"
             Me._adapter.InsertCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@firstName", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "firstName", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@lastName", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "lastName", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@theatLevelID", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "theatLevelID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@threatLevelID", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "threatLevelID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@allianceID", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "allianceID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@notes", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "notes", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand = New Global.System.Data.SqlClient.SqlCommand()
             Me._adapter.UpdateCommand.Connection = Me.Connection
             Me._adapter.UpdateCommand.CommandText = "UPDATE [dbo].[datEnemy] SET [firstName] = @firstName, [lastName] = @lastName, [th"& _ 
-                "eatLevelID] = @theatLevelID, [allianceID] = @allianceID, [notes] = @notes WHERE "& _ 
-                "(([enemyID] = @Original_enemyID) AND ([firstName] = @Original_firstName) AND ((@"& _ 
-                "IsNull_lastName = 1 AND [lastName] IS NULL) OR ([lastName] = @Original_lastName)"& _ 
-                ") AND ([theatLevelID] = @Original_theatLevelID) AND ([allianceID] = @Original_al"& _ 
-                "lianceID));"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT enemyID, firstName, lastName, theatLevelID, allianceID, note"& _ 
-                "s FROM datEnemy WHERE (enemyID = @enemyID)"
+                "reatLevelID] = @threatLevelID, [allianceID] = @allianceID, [notes] = @notes WHER"& _ 
+                "E (([enemyID] = @Original_enemyID) AND ([firstName] = @Original_firstName) AND ("& _ 
+                "(@IsNull_lastName = 1 AND [lastName] IS NULL) OR ([lastName] = @Original_lastNam"& _ 
+                "e)) AND ([threatLevelID] = @Original_threatLevelID) AND ([allianceID] = @Origina"& _ 
+                "l_allianceID));"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT enemyID, firstName, lastName, threatLevelID, allianceID,"& _ 
+                " notes FROM datEnemy WHERE (enemyID = @enemyID)"
             Me._adapter.UpdateCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@firstName", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "firstName", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@lastName", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "lastName", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@theatLevelID", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "theatLevelID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@threatLevelID", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "threatLevelID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@allianceID", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "allianceID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@notes", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "notes", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_enemyID", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "enemyID", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_firstName", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "firstName", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_lastName", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "lastName", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_lastName", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "lastName", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_theatLevelID", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "theatLevelID", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_threatLevelID", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "threatLevelID", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_allianceID", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "allianceID", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@enemyID", Global.System.Data.SqlDbType.Int, 4, Global.System.Data.ParameterDirection.Input, 0, 0, "enemyID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
         End Sub
@@ -1813,8 +1813,8 @@ Namespace dsLab06TableAdapters
             Me._commandCollection = New Global.System.Data.SqlClient.SqlCommand(0) {}
             Me._commandCollection(0) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(0).Connection = Me.Connection
-            Me._commandCollection(0).CommandText = "SELECT enemyID, firstName, lastName, theatLevelID, allianceID, notes FROM dbo.dat"& _ 
-                "Enemy"
+            Me._commandCollection(0).CommandText = "SELECT enemyID, firstName, lastName, threatLevelID, allianceID, notes FROM dbo.da"& _ 
+                "tEnemy"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
         End Sub
         
@@ -1874,7 +1874,7 @@ Namespace dsLab06TableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Delete, true)>  _
-        Public Overloads Overridable Function Delete(ByVal Original_enemyID As Integer, ByVal Original_firstName As String, ByVal Original_lastName As String, ByVal Original_theatLevelID As Integer, ByVal Original_allianceID As Integer) As Integer
+        Public Overloads Overridable Function Delete(ByVal Original_enemyID As Integer, ByVal Original_firstName As String, ByVal Original_lastName As String, ByVal Original_threatLevelID As Integer, ByVal Original_allianceID As Integer) As Integer
             Me.Adapter.DeleteCommand.Parameters(0).Value = CType(Original_enemyID,Integer)
             If (Original_firstName Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("Original_firstName")
@@ -1888,7 +1888,7 @@ Namespace dsLab06TableAdapters
                 Me.Adapter.DeleteCommand.Parameters(2).Value = CType(0,Object)
                 Me.Adapter.DeleteCommand.Parameters(3).Value = CType(Original_lastName,String)
             End If
-            Me.Adapter.DeleteCommand.Parameters(4).Value = CType(Original_theatLevelID,Integer)
+            Me.Adapter.DeleteCommand.Parameters(4).Value = CType(Original_threatLevelID,Integer)
             Me.Adapter.DeleteCommand.Parameters(5).Value = CType(Original_allianceID,Integer)
             Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.DeleteCommand.Connection.State
             If ((Me.Adapter.DeleteCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
@@ -1909,7 +1909,7 @@ Namespace dsLab06TableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Insert, true)>  _
-        Public Overloads Overridable Function Insert(ByVal firstName As String, ByVal lastName As String, ByVal theatLevelID As Integer, ByVal allianceID As Integer, ByVal notes As String) As Integer
+        Public Overloads Overridable Function Insert(ByVal firstName As String, ByVal lastName As String, ByVal threatLevelID As Integer, ByVal allianceID As Integer, ByVal notes As String) As Integer
             If (firstName Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("firstName")
             Else
@@ -1920,7 +1920,7 @@ Namespace dsLab06TableAdapters
             Else
                 Me.Adapter.InsertCommand.Parameters(1).Value = CType(lastName,String)
             End If
-            Me.Adapter.InsertCommand.Parameters(2).Value = CType(theatLevelID,Integer)
+            Me.Adapter.InsertCommand.Parameters(2).Value = CType(threatLevelID,Integer)
             Me.Adapter.InsertCommand.Parameters(3).Value = CType(allianceID,Integer)
             If (notes Is Nothing) Then
                 Me.Adapter.InsertCommand.Parameters(4).Value = Global.System.DBNull.Value
@@ -1946,7 +1946,7 @@ Namespace dsLab06TableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Update, true)>  _
-        Public Overloads Overridable Function Update(ByVal firstName As String, ByVal lastName As String, ByVal theatLevelID As Integer, ByVal allianceID As Integer, ByVal notes As String, ByVal Original_enemyID As Integer, ByVal Original_firstName As String, ByVal Original_lastName As String, ByVal Original_theatLevelID As Integer, ByVal Original_allianceID As Integer, ByVal enemyID As Integer) As Integer
+        Public Overloads Overridable Function Update(ByVal firstName As String, ByVal lastName As String, ByVal threatLevelID As Integer, ByVal allianceID As Integer, ByVal notes As String, ByVal Original_enemyID As Integer, ByVal Original_firstName As String, ByVal Original_lastName As String, ByVal Original_threatLevelID As Integer, ByVal Original_allianceID As Integer, ByVal enemyID As Integer) As Integer
             If (firstName Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("firstName")
             Else
@@ -1957,7 +1957,7 @@ Namespace dsLab06TableAdapters
             Else
                 Me.Adapter.UpdateCommand.Parameters(1).Value = CType(lastName,String)
             End If
-            Me.Adapter.UpdateCommand.Parameters(2).Value = CType(theatLevelID,Integer)
+            Me.Adapter.UpdateCommand.Parameters(2).Value = CType(threatLevelID,Integer)
             Me.Adapter.UpdateCommand.Parameters(3).Value = CType(allianceID,Integer)
             If (notes Is Nothing) Then
                 Me.Adapter.UpdateCommand.Parameters(4).Value = Global.System.DBNull.Value
@@ -1977,7 +1977,7 @@ Namespace dsLab06TableAdapters
                 Me.Adapter.UpdateCommand.Parameters(7).Value = CType(0,Object)
                 Me.Adapter.UpdateCommand.Parameters(8).Value = CType(Original_lastName,String)
             End If
-            Me.Adapter.UpdateCommand.Parameters(9).Value = CType(Original_theatLevelID,Integer)
+            Me.Adapter.UpdateCommand.Parameters(9).Value = CType(Original_threatLevelID,Integer)
             Me.Adapter.UpdateCommand.Parameters(10).Value = CType(Original_allianceID,Integer)
             Me.Adapter.UpdateCommand.Parameters(11).Value = CType(enemyID,Integer)
             Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.UpdateCommand.Connection.State
@@ -1999,8 +1999,8 @@ Namespace dsLab06TableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Update, true)>  _
-        Public Overloads Overridable Function Update(ByVal firstName As String, ByVal lastName As String, ByVal theatLevelID As Integer, ByVal allianceID As Integer, ByVal notes As String, ByVal Original_enemyID As Integer, ByVal Original_firstName As String, ByVal Original_lastName As String, ByVal Original_theatLevelID As Integer, ByVal Original_allianceID As Integer) As Integer
-            Return Me.Update(firstName, lastName, theatLevelID, allianceID, notes, Original_enemyID, Original_firstName, Original_lastName, Original_theatLevelID, Original_allianceID, Original_enemyID)
+        Public Overloads Overridable Function Update(ByVal firstName As String, ByVal lastName As String, ByVal threatLevelID As Integer, ByVal allianceID As Integer, ByVal notes As String, ByVal Original_enemyID As Integer, ByVal Original_firstName As String, ByVal Original_lastName As String, ByVal Original_threatLevelID As Integer, ByVal Original_allianceID As Integer) As Integer
+            Return Me.Update(firstName, lastName, threatLevelID, allianceID, notes, Original_enemyID, Original_firstName, Original_lastName, Original_threatLevelID, Original_allianceID, Original_enemyID)
         End Function
     End Class
     

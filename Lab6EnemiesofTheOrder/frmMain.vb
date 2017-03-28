@@ -9,8 +9,6 @@ Public Class frmMain
 
     End Sub
 
-
-
     Private Sub AboutToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AboutToolStripMenuItem.Click
         frmAbout.Show()
 
@@ -65,6 +63,8 @@ Public Class frmMain
         e.threatLevelID = CInt(frmEnemyEditor.cboThreatLevel.SelectedValue)     ' need to make sure the value member is set
         e.notes = ""
 
+        Console.WriteLine("Saving Data - allianceID: " & e.allianceID & " and threatLevelID: " & e.threatLevelID)
+
         If frmEnemyEditor.txtFirstName.Text.Trim = String.Empty Or frmEnemyEditor.txtLastName.Text.Trim = String.Empty Then
             MsgBox("You must enter valid data in the first name and last name fields", 0, "Input Error")
 
@@ -91,6 +91,13 @@ Public Class frmMain
 
     End Sub
 
+
+    Public Sub deleteEnemy(ID As Integer)
+        ' Delete Enemy
+        DBL.Tables.datEnemy.deleteRow(ID)
+        Console.WriteLine("Got Row to delete: " & ID)
+    End Sub
+
     Public Sub populateDataGrid()
         ' Declare table object
         Dim TableData As List(Of DBL.Views.Enemies) = DBL.Views.Enemies.getEnemyList()
@@ -98,13 +105,37 @@ Public Class frmMain
         Me.dgvEnemiesofSecondOrder.DataSource = Nothing
         Me.dgvEnemiesofSecondOrder.DataSource = TableData
 
+        ' Manually Set Column Visibility
+        Me.dgvEnemiesofSecondOrder.Columns("allianceID").Visible = False
+        Me.dgvEnemiesofSecondOrder.Columns("allianceName").DisplayIndex = 4
+        Me.dgvEnemiesofSecondOrder.Columns("isActive").Visible = False
+        Me.dgvEnemiesofSecondOrder.Columns("enemyID").DisplayIndex = 0
+        Me.dgvEnemiesofSecondOrder.Columns("firstName").DisplayIndex = 1
+        Me.dgvEnemiesofSecondOrder.Columns("lastName").DisplayIndex = 2
+        Me.dgvEnemiesofSecondOrder.Columns("threatLevel").DisplayIndex = 3
+        Me.dgvEnemiesofSecondOrder.Columns("threatLevelID").Visible = False
+        Me.dgvEnemiesofSecondOrder.Columns("notes").Visible = False
+
+
+
 
     End Sub
 
 
 
     Public Sub populateComboBoxes()
+        ' Declare table object
+        Dim Alliances As List(Of DBL.Tables.lstAlliances) = DBL.Tables.lstAlliances.getAllRows()
 
+
+        frmEnemyEditor.cboAlliance.DataSource = Nothing
+        frmEnemyEditor.cboAlliance.DataSource = Alliances
+
+        ' Declare table object
+        Dim Threats As List(Of DBL.Tables.lstThreatLevel) = DBL.Tables.lstThreatLevel.getAllRows()
+
+        frmEnemyEditor.cboThreatLevel.DataSource = Nothing
+        frmEnemyEditor.cboThreatLevel.DataSource = Threats
     End Sub
 
     Private Sub MenuRefreshEnemies_Click(sender As Object, e As EventArgs) Handles MenuRefreshEnemies.Click
@@ -112,6 +143,6 @@ Public Class frmMain
     End Sub
 
     Private Sub MenuDeleteCurrent_Click(sender As Object, e As EventArgs) Handles MenuDeleteCurrent.Click
-
+        Call deleteEnemy(Me.dgvEnemiesofSecondOrder.CurrentCell.RowIndex)
     End Sub
 End Class

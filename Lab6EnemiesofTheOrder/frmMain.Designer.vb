@@ -29,7 +29,7 @@ Partial Class frmMain
         Me.btnNotes = New System.Windows.Forms.Button()
         Me.lblCurrentEnemiesofTheSecondOrder = New System.Windows.Forms.Label()
         Me.StatusStrip1 = New System.Windows.Forms.StatusStrip()
-        Me.ToolStripStatusLabel1 = New System.Windows.Forms.ToolStripStatusLabel()
+        Me.tsMainFormStatus = New System.Windows.Forms.ToolStripStatusLabel()
         Me.MenuStrip2 = New System.Windows.Forms.MenuStrip()
         Me.MenuFile = New System.Windows.Forms.ToolStripMenuItem()
         Me.MenuExit = New System.Windows.Forms.ToolStripMenuItem()
@@ -108,18 +108,18 @@ Partial Class frmMain
         Me.StatusStrip1.Anchor = CType(((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.StatusStrip1.Dock = System.Windows.Forms.DockStyle.None
-        Me.StatusStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripStatusLabel1})
+        Me.StatusStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.tsMainFormStatus})
         Me.StatusStrip1.Location = New System.Drawing.Point(0, 531)
         Me.StatusStrip1.Name = "StatusStrip1"
-        Me.StatusStrip1.Size = New System.Drawing.Size(138, 22)
+        Me.StatusStrip1.Size = New System.Drawing.Size(93, 22)
         Me.StatusStrip1.TabIndex = 4
         Me.StatusStrip1.Text = "StatusStrip1"
         '
-        'ToolStripStatusLabel1
+        'tsMainFormStatus
         '
-        Me.ToolStripStatusLabel1.Name = "ToolStripStatusLabel1"
-        Me.ToolStripStatusLabel1.Size = New System.Drawing.Size(121, 17)
-        Me.ToolStripStatusLabel1.Text = "ToolStripStatusLabel1"
+        Me.tsMainFormStatus.Name = "tsMainFormStatus"
+        Me.tsMainFormStatus.Size = New System.Drawing.Size(45, 17)
+        Me.tsMainFormStatus.Text = "Status: "
         '
         'MenuStrip2
         '
@@ -293,7 +293,7 @@ Partial Class frmMain
     Friend WithEvents DsLab06BindingSource As BindingSource
     Friend WithEvents DsLab06 As dsLab06
     Friend WithEvents ErrorProvider1 As ErrorProvider
-    Friend WithEvents ToolStripStatusLabel1 As ToolStripStatusLabel
+    Friend WithEvents tsMainFormStatus As ToolStripStatusLabel
     Friend WithEvents DatEnemyBindingSource As BindingSource
     Friend WithEvents DatEnemyTableAdapter As dsLab06TableAdapters.datEnemyTableAdapter
     Friend WithEvents DsLab06BindingSource1 As BindingSource

@@ -13,6 +13,8 @@ Public Class frmEnemyEditor
         End If
     End Sub
 
+
+
     Private Sub btnCancel_Click(sender As Object, e As EventArgs) Handles btnCancel.Click
         Me.Close()
     End Sub
@@ -20,11 +22,8 @@ Public Class frmEnemyEditor
     Private Sub btnSave_Click(sender As Object, e As EventArgs) Handles btnSave.Click
         Call frmMain.saveOrCreateEnemy()
         Call frmMain.populateDataGrid()
-        Try
+        Me.Close()
 
-        Catch ex As Exception
-
-        End Try
     End Sub
 
     Public Sub populateEnemyData()
@@ -41,6 +40,8 @@ Public Class frmEnemyEditor
         Me.cboThreatLevel.DataSource = DBL.Tables.lstThreatLevel.getAllRows()
         Me.cboThreatLevel.ValueMember = "levelID"
         Me.cboThreatLevel.DisplayMember = "threatLevel"
+
+        Console.WriteLine("ThreatLevel: " & EnemyData.threatLevel & " and levelID: " & EnemyData.threatLevelID)
     End Sub
     Public Sub populateEnemyData(ID As Integer)
         Dim EnemyData As New DBL.Views.Enemies
@@ -59,6 +60,7 @@ Public Class frmEnemyEditor
         Me.cboThreatLevel.DisplayMember = "threatLevel"
         Me.cboThreatLevel.ValueMember = "levelID"
 
+        Console.WriteLine("ThreatLevel: " & EnemyData.threatLevel & " and levelID: " & EnemyData.threatLevelID)
 
     End Sub
 End Class
