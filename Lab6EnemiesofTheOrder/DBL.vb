@@ -613,7 +613,7 @@ Namespace DBL
             End Function
             Public Shared Function updateExistingRow(Row As datEnemy) As Boolean
                 Dim ReturnValue As Boolean = False
-                If Row.enemyID >= 0 Then
+                If Row.enemyID > 0 Then
                     Dim connDB As New SqlConnection
                     connDB.ConnectionString = Conn.getConnectionString
 
@@ -909,7 +909,7 @@ Namespace DBL
             End Function
             Public Shared Function updateExistingRow(Row As Enemies) As Boolean
                 Dim ReturnValue As Boolean = False
-                If Row.enemyID >= 0 Then
+                If Row.enemyID > 0 Then
                     Dim connDB As New SqlConnection
                     connDB.ConnectionString = Conn.getConnectionString
 

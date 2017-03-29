@@ -23,7 +23,7 @@ Partial Class frmNotes
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmNotes))
-        Me.StatusStrip1 = New System.Windows.Forms.StatusStrip()
+        Me.stsNotes = New System.Windows.Forms.StatusStrip()
         Me.MenuStrip1 = New System.Windows.Forms.MenuStrip()
         Me.NoteToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.SaveToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -37,24 +37,24 @@ Partial Class frmNotes
         Me.PasteCtrlVToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ClearAllToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.OptionsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.WordWrapFalseToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.tsWordWrap = New System.Windows.Forms.ToolStripMenuItem()
         Me.lblEnemy = New System.Windows.Forms.Label()
         Me.lblEnemyInfo = New System.Windows.Forms.Label()
         Me.rtbEnemy = New System.Windows.Forms.RichTextBox()
         Me.MenuStrip1.SuspendLayout()
         Me.SuspendLayout()
         '
-        'StatusStrip1
+        'stsNotes
         '
-        Me.StatusStrip1.Anchor = CType(((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left) _
+        Me.stsNotes.Anchor = CType(((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.StatusStrip1.AutoSize = False
-        Me.StatusStrip1.Dock = System.Windows.Forms.DockStyle.None
-        Me.StatusStrip1.Location = New System.Drawing.Point(2, 566)
-        Me.StatusStrip1.Name = "StatusStrip1"
-        Me.StatusStrip1.Size = New System.Drawing.Size(928, 22)
-        Me.StatusStrip1.TabIndex = 0
-        Me.StatusStrip1.Text = "StatusStrip1"
+        Me.stsNotes.AutoSize = False
+        Me.stsNotes.Dock = System.Windows.Forms.DockStyle.None
+        Me.stsNotes.Location = New System.Drawing.Point(2, 566)
+        Me.stsNotes.Name = "stsNotes"
+        Me.stsNotes.Size = New System.Drawing.Size(928, 22)
+        Me.stsNotes.TabIndex = 0
+        Me.stsNotes.Text = "StatusStrip1"
         '
         'MenuStrip1
         '
@@ -82,13 +82,13 @@ Partial Class frmNotes
         '
         Me.SaveToolStripMenuItem.Name = "SaveToolStripMenuItem"
         Me.SaveToolStripMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.S), System.Windows.Forms.Keys)
-        Me.SaveToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.SaveToolStripMenuItem.Size = New System.Drawing.Size(151, 22)
         Me.SaveToolStripMenuItem.Text = "Save "
         '
         'CloseToolStripMenuItem
         '
         Me.CloseToolStripMenuItem.Name = "CloseToolStripMenuItem"
-        Me.CloseToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.CloseToolStripMenuItem.Size = New System.Drawing.Size(151, 22)
         Me.CloseToolStripMenuItem.Text = "Close"
         '
         'ImportExportToolStripMenuItem
@@ -148,17 +148,17 @@ Partial Class frmNotes
         '
         'OptionsToolStripMenuItem
         '
-        Me.OptionsToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.WordWrapFalseToolStripMenuItem})
+        Me.OptionsToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.tsWordWrap})
         Me.OptionsToolStripMenuItem.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.OptionsToolStripMenuItem.Name = "OptionsToolStripMenuItem"
         Me.OptionsToolStripMenuItem.Size = New System.Drawing.Size(66, 21)
         Me.OptionsToolStripMenuItem.Text = "Options"
         '
-        'WordWrapFalseToolStripMenuItem
+        'tsWordWrap
         '
-        Me.WordWrapFalseToolStripMenuItem.Name = "WordWrapFalseToolStripMenuItem"
-        Me.WordWrapFalseToolStripMenuItem.Size = New System.Drawing.Size(186, 22)
-        Me.WordWrapFalseToolStripMenuItem.Text = "Word Wrap (False)"
+        Me.tsWordWrap.Name = "tsWordWrap"
+        Me.tsWordWrap.Size = New System.Drawing.Size(186, 22)
+        Me.tsWordWrap.Text = "Word Wrap (False)"
         '
         'lblEnemy
         '
@@ -172,9 +172,10 @@ Partial Class frmNotes
         '
         'lblEnemyInfo
         '
-        Me.lblEnemyInfo.Location = New System.Drawing.Point(84, 51)
+        Me.lblEnemyInfo.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblEnemyInfo.Location = New System.Drawing.Point(84, 46)
         Me.lblEnemyInfo.Name = "lblEnemyInfo"
-        Me.lblEnemyInfo.Size = New System.Drawing.Size(151, 30)
+        Me.lblEnemyInfo.Size = New System.Drawing.Size(480, 30)
         Me.lblEnemyInfo.TabIndex = 3
         '
         'rtbEnemy
@@ -187,6 +188,7 @@ Partial Class frmNotes
         Me.rtbEnemy.Size = New System.Drawing.Size(904, 481)
         Me.rtbEnemy.TabIndex = 4
         Me.rtbEnemy.Text = ""
+        Me.rtbEnemy.WordWrap = False
         '
         'frmNotes
         '
@@ -196,7 +198,7 @@ Partial Class frmNotes
         Me.Controls.Add(Me.rtbEnemy)
         Me.Controls.Add(Me.lblEnemyInfo)
         Me.Controls.Add(Me.lblEnemy)
-        Me.Controls.Add(Me.StatusStrip1)
+        Me.Controls.Add(Me.stsNotes)
         Me.Controls.Add(Me.MenuStrip1)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.MainMenuStrip = Me.MenuStrip1
@@ -210,7 +212,7 @@ Partial Class frmNotes
 
     End Sub
 
-    Friend WithEvents StatusStrip1 As StatusStrip
+    Friend WithEvents stsNotes As StatusStrip
     Friend WithEvents MenuStrip1 As MenuStrip
     Friend WithEvents NoteToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents SaveToolStripMenuItem As ToolStripMenuItem
@@ -224,7 +226,7 @@ Partial Class frmNotes
     Friend WithEvents PasteCtrlVToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ClearAllToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents OptionsToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents WordWrapFalseToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents tsWordWrap As ToolStripMenuItem
     Friend WithEvents lblEnemy As Label
     Friend WithEvents lblEnemyInfo As Label
     Friend WithEvents rtbEnemy As RichTextBox

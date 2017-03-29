@@ -45,7 +45,7 @@ Public Class frmEnemyEditor
     End Sub
     Public Sub populateEnemyData(ID As Integer)
         Dim EnemyData As New DBL.Views.Enemies
-        EnemyData = DBL.Views.Enemies.getOneRow(ID)
+        EnemyData = DBL.Views.Enemies.getOneRow(ID + 1)
 
         Me.lblEnemyIDNumber.Text = EnemyData.enemyID.ToString
         Me.txtFirstName.Text = EnemyData.firstName

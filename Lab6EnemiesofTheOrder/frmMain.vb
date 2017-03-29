@@ -1,6 +1,18 @@
-﻿Option Strict On
+﻿' ***************************************************************************
+'Authors: Mohammad Al Jarrah 100628987 & Raymonde Thompson                  *
+'Lab 6 Enemies of the Secon Order                                           *
+'2017-03-27                                                                 *
+'This application was created as a Lab 6 requierment.                       *
+'This application prompt the user With information such As threat level     *
+'And allegiances, Of specific individual that are enemies Of the Second     *
+'Order  In order To track them And Get rid Of them..                        *
+'                                                                           *
+'Credits: https://msdn.microsoft.com/en-us/library/aa262347(v=vs.60).aspx   *
+' ***************************************************************************
+Option Strict On
 
 Imports System.ComponentModel
+Imports System.IO.StreamWriter
 
 Public Class frmMain
     Private Sub frmEnemiesofTheSecondOrder_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -8,16 +20,28 @@ Public Class frmMain
         Call populateDataGrid()
 
     End Sub
-
+    ''' <summary>
+    ''' Open the About form
+    ''' </summary>
+    ''' <param name="sender"></param>
+    ''' <param name="e"></param>
     Private Sub AboutToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AboutToolStripMenuItem.Click
         frmAbout.Show()
 
     End Sub
-
+    ''' <summary>
+    ''' Close the main form 
+    ''' </summary>
+    ''' <param name="sender"></param>
+    ''' <param name="e"></param>
     Private Sub MenuExit_Click(sender As Object, e As EventArgs) Handles MenuExit.Click
         End
     End Sub
-
+    ''' <summary>
+    ''' Open Enemy Editor form
+    ''' </summary>
+    ''' <param name="sender"></param>
+    ''' <param name="e"></param>
     Private Sub MenuAddNew_Click(sender As Object, e As EventArgs) Handles MenuAddNew.Click
         frmEnemyEditor.Show()
     End Sub
@@ -36,11 +60,7 @@ Public Class frmMain
         frmEnemyEditor.Show()
     End Sub
 
-    Private Sub frmMain_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
-        For Each f As Form In My.Application.OpenForms
-            f.Close()
-        Next
-    End Sub
+
 
     Private Sub MenuNotes_Click(sender As Object, e As EventArgs) Handles MenuNotes.Click
         frmNotes.Show()
@@ -144,5 +164,9 @@ Public Class frmMain
 
     Private Sub MenuDeleteCurrent_Click(sender As Object, e As EventArgs) Handles MenuDeleteCurrent.Click
         Call deleteEnemy(Me.dgvEnemiesofSecondOrder.CurrentCell.RowIndex)
+    End Sub
+
+    Private Sub frmMain_Closed(sender As Object, e As EventArgs) Handles Me.Closed
+        Call Application.Exit()
     End Sub
 End Class
